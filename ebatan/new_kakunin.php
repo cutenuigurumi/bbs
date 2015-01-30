@@ -6,7 +6,6 @@ $html = '';
 
 $html.=<<<EOD
 
-
 <html>
 <head>
 <title>新規投稿</title>
