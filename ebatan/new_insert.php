@@ -11,23 +11,11 @@ $body = $_POST['body'];
 header("HTTP/1.1 301 Moved Permanently");
 header("Location: http://54.92.3.142/ebatan/list.php");
 
-//データベースに接続
-$link = mysql_connect('localhost', 'user_b', 'ned5725');
-if (!$link) {
-    die('接続失敗です。'.mysql_error());
-}
-
-$timestamp = time();
-
-//データベースの選択
-$db_selected = mysql_select_db('bbs', $link);
-if(!$db_selected){
-	die("データベースの選択失敗です".mysql_error());
-}
+//db接続の共通化
+require('db_connect.php');
 
 //SQLを格納
-//$sql = "INSERT INTO post(title, body, created_at) VALUES ('$title', '$body', cast ( now() as datetime))";
-$sql = "INSERT INTO post(title, body) VALUES ('$title', '$body')";
+$sql = "INSERT INTO post(title, body, created_at) VALUES ('$title', '$body', now())";
 
 //クエリの発行
 $result = mysql_query($sql, $link);
@@ -36,6 +24,13 @@ if(!$result){
 }
 
 print("書き込みました。戻ります<br>");
+
+//セッションの削除
+session_start();
+session_unset();
+if (isset($_COOKIE["PHPSESSID"])) {
+    setcookie("PHPSESSID", '', time() - 1800, '/');
+}
 
 $close_flag = mysql_close($link);
 
