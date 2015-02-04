@@ -4,22 +4,20 @@ session_start();
 
 //入力された内容が正しいかの判定処理。駄目だったらnew.phpに戻す
 if($_POST['title'] == ''){
-	$_SESSION['e_title_none'] = 1;
+	$_SESSION['error_message']['title']['none'] = 1;
 	header('Location: http://54.92.3.142/ebatan/new.php');
-} elseif(mb_strlen($_POST['title']) > 64){
-	$_SESSION['e_title_over'] = 1;
+} elseif(mb_strlen($_POST['title']) >= 64){
+	$_SESSION['error_message']['title']['over']  = 1;
 	header('Location: http://54.92.3.142/ebatan/new.php');
 }
 if($_POST['body'] == ''){
-	$_SESSION['e_body_none'] = 1;
+	 $_SESSION['error_message']['body']['none'] = 1;
 	header('Location: http://54.92.3.142/ebatan/new.php');
 }
-
 
 $title = $_POST['title'];
 $body = $_POST['body'];
 $html = '';
-
 
 $html.=<<<EOD
 

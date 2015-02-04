@@ -13,22 +13,25 @@ $error_msg = "";
 
 //初回の判定
 if(empty($_COOKIE["PHPSESSID"])){
-	$_SESSION['e_title_none'] = '';
-	$_SESSION['e_title_over'] = '';
-	$_SESSION['e_body_none'] = '';
+	$_SESSION['error_message']['title']['none'] = '';
+	$_SESSION['error_message']['title']['over'] = '';
+	$_SESSION['error_message']['body']['none'] = '';
 }
 //new_kakunin.phpでエラーがあったかの処理
-if($_SESSION['e_title_none'] == 1){
+if(isset( $_SESSION['error_message']['title']['none']) &&  $_SESSION['error_message']['title']['none'] == 1){
 	$error_msg .= NONE_TITLE;
 }
-if($_SESSION['e_title_over'] == 1){
+if(isset($_SESSION['error_message']['title']['over'] ) && $_SESSION['error_message']['title']['over']  == 1){
 	$error_msg .= OVER_TITLE;
 }
-if($_SESSION['e_body_none'] == 1){
+if(isset($_SESSION['error_message']['body']['none']) &&  $_SESSION['error_message']['body']['none'] == 1){
 	$error_msg .= NONE_BODY;
 }
 
-session_unset();
+
+$_SESSION['error_message']['title']['none'] = '';
+$_SESSION['error_message']['title']['over']  = '';
+$_SESSION['error_message']['body']['none'] = '';
 
 ?>
 
