@@ -28,7 +28,22 @@ if(isset($_SESSION['error_message']['body']['none']) &&  $_SESSION['error_messag
 	$error_msg .= NONE_BODY;
 }
 
-
+/*
+if(isset($_SESSION['error_message']['title']['none']) && isset( $_SESSION['error_message']['title']['over']) && isset( $_SESSION['error_message']['body']['none'])){
+    setcookie("title", $title);
+    setcookie("body", $body);
+}
+*/
+if(isset( $_COOKIE["title"])){
+	$title = $_COOKIE["title"];
+} else {
+	$title = '件名を入力';
+}
+if(isset( $_COOKIE["body"])){
+	$body = $_COOKIE["body"];
+} else {
+	$body = '本文をここに入力してください。';
+}
 $_SESSION['error_message']['title']['none'] = '';
 $_SESSION['error_message']['title']['over']  = '';
 $_SESSION['error_message']['body']['none'] = '';
@@ -44,10 +59,10 @@ $_SESSION['error_message']['body']['none'] = '';
 <form action="new_kakunin.php" method="post">
 <p>
 <span class = "error"><?php echo($error_msg); ?></span>
-件名：<input type="text" name="title">
+件名：<input type="text" name="title" value="<?php echo($title); ?>">
 </p>
 <p>
-本文：<textarea name="body" rows="4" cols="40">ここに本文</textarea>
+本文：<textarea name="body" rows="4" cols="40"><?php echo($body); ?></textarea>
 </p>
 <p>
 <input type="submit" value="送信">
