@@ -16,7 +16,8 @@ $title = $_POST['title'];
 $body = $_POST['body'];
 $html = '';
 
-if(isset($_SESSION['error_message']['title']['none']) && isset( $_SESSION['error_message']['title']['over']) && isset( $_SESSION['error_message']['body']['none'])){
+//上の判定処理に一個でも引っかかったら入力した値をクッキーにセットしてnew.phpにリダイレクトする処理
+if(!empty($_SESSION['error_message']['title']['none']) || !empty( $_SESSION['error_message']['title']['over']) || !empty( $_SESSION['error_message']['body']['none'])){
 	setcookie("title", $title);
 	setcookie("body", $body);
 	header('Location: http://54.92.3.142/ebatan/new.php');

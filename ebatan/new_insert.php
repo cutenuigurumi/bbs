@@ -28,9 +28,9 @@ print("書き込みました。戻ります<br>");
 //セッションの削除
 session_start();
 session_unset();
-if (isset($_COOKIE["PHPSESSID"])) {
-    setcookie("PHPSESSID", '', time() - 1800, '/');
-}
+
+setcookie("title", $title, time() - 1800);
+setcookie("body", $body, time() - 1800);
 
 $close_flag = mysql_close($link);
 

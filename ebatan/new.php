@@ -28,12 +28,6 @@ if(isset($_SESSION['error_message']['body']['none']) &&  $_SESSION['error_messag
 	$error_msg .= NONE_BODY;
 }
 
-/*
-if(isset($_SESSION['error_message']['title']['none']) && isset( $_SESSION['error_message']['title']['over']) && isset( $_SESSION['error_message']['body']['none'])){
-    setcookie("title", $title);
-    setcookie("body", $body);
-}
-*/
 if(isset( $_COOKIE["title"])){
 	$title = $_COOKIE["title"];
 } else {
