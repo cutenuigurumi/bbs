@@ -29,9 +29,6 @@ print("書き込みました。戻ります<br>");
 session_start();
 session_unset();
 
-setcookie("title", $title, time() - 1800);
-setcookie("body", $body, time() - 1800);
-
 $close_flag = mysql_close($link);
 
 if ($close_flag){

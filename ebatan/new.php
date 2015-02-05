@@ -6,12 +6,9 @@ define("NONE_BODY", "<p>本文がありません</p>");
 //デバッグ用
 error_reporting(E_ALL);
 ini_set( 'display_errors', 1 );
-
-require_once('view/new.php');
-
 session_start();
 
-$error_msg = "";
+$error_msg = '';
 
 //初回の判定
 if(empty($_COOKIE["PHPSESSID"])){
@@ -20,7 +17,7 @@ if(empty($_COOKIE["PHPSESSID"])){
 	$_SESSION['error_message']['body']['none'] = '';
 }
 //new_kakunin.phpでエラーがあったかの処理
-if(isset( $_SESSION['error_message']['title']['none']) &&  $_SESSION['error_message']['title']['none'] == 1){
+if(isset($_SESSION['error_message']['title']['none']) &&  $_SESSION['error_message']['title']['none'] == 1){
 	$error_msg .= NONE_TITLE;
 }
 if(isset($_SESSION['error_message']['title']['over'] ) && $_SESSION['error_message']['title']['over']  == 1){
@@ -30,19 +27,23 @@ if(isset($_SESSION['error_message']['body']['none']) &&  $_SESSION['error_messag
 	$error_msg .= NONE_BODY;
 }
 
-if(isset( $_COOKIE["title"])){
-	$title = $_COOKIE["title"];
+if(!empty($_SESSION['title'])){
+	$title = $_SESSION['title'];
 } else {
-	$title = '件名を入力';
+	$title = '';
 }
-if(isset( $_COOKIE["body"])){
-	$body = $_COOKIE["body"];
+if(!empty($_SESSION['body'])){
+	$body = $_SESSION['body'];
 } else {
-	$body = '本文をここに入力してください。';
+	$body = '本文';
 }
+
+require_once('view/new.php');
+
 $_SESSION['error_message']['title']['none'] = '';
 $_SESSION['error_message']['title']['over']  = '';
 $_SESSION['error_message']['body']['none'] = '';
+$_SESSION['title'] = ''; 
+$_SESSION['body'] = ''; 
 
 ?>
-
