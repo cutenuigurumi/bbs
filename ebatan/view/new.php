@@ -5,12 +5,12 @@
 <html>
 <head>
 <title>新規投稿</title>
-<link href="./style.css" rel="stylesheet" type="text/css">
+<link href="view/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form action="new_kakunin.php" method="post">
+<p class = "error"><?php echo($error_msg); ?></p>
 <p>
-<span class = "error"><?php echo($error_msg); ?></span>
 件名：<input type="text" name="title" value="<?php echo($title); ?>">
 </p>
 <p>

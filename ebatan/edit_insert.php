@@ -4,10 +4,9 @@ error_reporting(E_ALL);
 ini_set( 'display_errors', 1 );
 
 //前ページから受け取る
-$id = $_POST['id'];
+$id = $_GET['id'];
 $title = $_POST['title'];
 $body = $_POST['body'];
-print('edit_insert'.$id);
 //list.phpにリダイレクト
 header("HTTP/1.1 301 Moved Permanently");
 header("Location: http://54.92.3.142/ebatan/list.php");
@@ -18,11 +17,10 @@ require('db_connect.php');
 //SQLを格納
 $sql = "UPDATE post SET title = '$title', body = '$body', updated_at = now() WHERE id = '$id';";
 
-
 //クエリの発行
 $result = mysql_query($sql, $link);
 if(!$result){
-	die('<p>クエリの発行に失敗しました。。</p>');
+	die('<p>updateクエリの発行に失敗しました。。</p>');
 }
 
 print("書き込みました。戻ります<br>");

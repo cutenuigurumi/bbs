@@ -4,7 +4,8 @@
 <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form action="edit_kakunin.php" method="post">
+<p class = "error"><?php echo($error_msg); ?></p>
+<form action="edit_kakunin.php?id=<?php echo($id) ?>" method="post">
 <p>
 <input type="hidden" name="id" value="<?php echo ($id) ?>">
 件名：<input type="text" name="title" value="<?php echo($title); ?>">

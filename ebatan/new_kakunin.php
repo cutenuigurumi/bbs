@@ -5,7 +5,7 @@ session_start();
 //入力された内容が正しいかの判定処理。駄目だったらnew.phpに戻す
 if($_POST['title'] === ''){
 	$_SESSION['error_message']['title']['none'] = 1;
-} elseif(mb_strlen($_POST['title']) >= 64){
+} elseif(mb_strlen($_POST['title']) > 64){
 	$_SESSION['error_message']['title']['over']  = 1;
 }
 if($_POST['body'] === ''){

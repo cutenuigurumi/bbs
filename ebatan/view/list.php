@@ -9,6 +9,7 @@
     <title>ebatan bbs</title>
 </head>
 <body>
+<link href="view/style.css" rel="stylesheet" type="text/css">
 <table>
     <tr>
     <td width="150"><a href="new.php">新規書き込み</a></td>
