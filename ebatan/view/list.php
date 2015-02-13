@@ -27,8 +27,8 @@
 foreach($post_list as $post){ ?>
         <tr>
         <td><?php echo $post['id']; ?></td>
-        <td><?php echo $post['title']; ?></td>
-        <td width="400"><?php echo nl2br($post['body']); ?></td>
+        <td><?php echo htmlspecialchars($post['title']); ?></td>
+        <td width="400"><?php echo nl2br(htmlspecialchars($post['body'])); ?></td>
         <td><?php echo $post['created_at'] ?></td>
         <td><?php echo $post['updated_at'] ?></td>
         <td><a href="edit.php?id=<?php echo($post['id']) ?>">編集</a>/<a href="delete.php?id=<?php echo($post['id']) ?>">削除</a></td>
