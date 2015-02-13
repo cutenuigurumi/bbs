@@ -22,10 +22,10 @@ require('view/edit_kakunin.php');
 
 //上の判定処理に一個でも引っかかったら入力した値をクッキーにセットしてedit.phpにリダイレクトする処理
 if(!empty($_SESSION['error_message']['title']['none']) || !empty($_SESSION['error_message']['title']['over']) || !empty($_SESSION['error_message']['body']['none'])){
-	$_SESSION['title'] = $title;
-	$_SESSION['body'] = $body;
 	header('Location: http://54.92.3.142/ebatan/edit.php?id='.$id);
 }
 
+$_SESSION['title'] = $title;
+$_SESSION['body'] = $body;
 
 ?>

@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set( 'display_errors', 1 );
 session_start();
-//前ページから受け取る＋エスケープ処理
+//前ページから受け取る
 $title = $_SESSION['title'];
 $body = $_SESSION['body'];
 
