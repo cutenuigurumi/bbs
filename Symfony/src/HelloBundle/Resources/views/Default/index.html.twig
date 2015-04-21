@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}ブログ記事の一覧{% endblock %}
+
+{% block body %}
+
+ {{ name }} さん!
+{% if name == 'test' %}
+    <p>この表示が見えていればif文はカンペキです。</p>
+{% endif %}
+現在の時刻は{{ time }}です。
+<h1>Members</h1>
+<table>
+	<tr>
+	<td>名前</td>
+	<td>email</td>
+	</tr>
+	<tr>
+		{% for user in users %}
+		<td>{{ user.username|e }}</td>
+		<td>{{ user.email|e }}</td>
+	</tr>
+    {% endfor %}
+</table>
+</ul>
+
+{% endblock %}

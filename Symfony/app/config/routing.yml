@@ -1,0 +1,7 @@
+win_road_hello:
+    resource: "@WinRoadHelloBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
